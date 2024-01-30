@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
+
 class LoginView(APIView):
     def post(self, request):
         username = request.data.get("username")
@@ -19,7 +20,12 @@ class LoginView(APIView):
         else:
             return JsonResponse({"error": "Invalid Credentials"}, status=401)
 
+
 class RestrictedView(APIView):
-    permission_classes = [IsAuthenticated]
-    def get(self,request):
-        return JsonResponse({"response":"You are Valid User"})
+    def get(self, request):
+        return JsonResponse({"response": "You are Valid User"})
+
+
+class GetAdvice(APIView):
+    def get(self, request):
+        return JsonResponse({"response": "Always follow DRY Rule"})

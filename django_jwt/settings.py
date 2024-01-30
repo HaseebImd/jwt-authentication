@@ -86,6 +86,8 @@ DATABASES = {
 # JWT Settings
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
@@ -134,6 +136,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SIMPLE_JWT = {
     #    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3),
-    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=20),  # it should be less than refresh_token
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        seconds=20
+    ),  # it should be less than refresh_token
     "REFRESH_TOKEN_LIFETIME": timedelta(seconds=20),
 }
